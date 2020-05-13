@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <title>Cards Info</title>
+    <link rel="stylesheet" type="text/css" href="3.1.css">
+
+   <style>
+    *
+    
+
+    .modal>input {
+      display: none;
+
+    }
+
+    .modal>input~* {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0
+
+    }
+
+
+    .modal .overlay {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: fixed;
+      margin: 0;
+      border-radius: 0;
+      background: rgba(17, 17, 17, 0.6);
+      transition: all 0.3s;
+      z-index: 100000;
+    
+    }
+
+    .modal .overlay~* {
+      border: 0;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%) scale(0.2, 0.2);
+      z-index: 1000000;
+      transition: all .3s ease;
+
+    }
+
+    .main {
+      background: #fff;
+      padding: 10px;
+
+    }
+
+   .modal>input:checked~* {
+      display: block;
+      opacity: 1;
+      max-height: 10000px;
+    }
+
+
+    .modal>input:checked~.overlay~* {
+      max-height: 90%;
+      overflow: auto;
+      -webkit-transform: translateX(-50%) translateY(-50%) scale(1, 1);
+      transform: translateX(-50%) translateY(-50%) scale(1, 1);
+    }
+
+
+
+
+
+  </style>
+    
+	<link href="http://newsimg.5054399.com/sjyx/v6/css/style_e8.css" rel="stylesheet" type="text/css" />
+	
+	<base target="_blank"></base>
+</head>
+<body background="https://lh3.googleusercontent.com/proxy/Ycs2CMZUiSxzBAcPNTyb1SzzLs4zyvqT53Ka1fUVJ44BEcjh2G8f1Z3PsaVWjUzPkRQmTkeum7n5FU4z--LVFggh3ETA_2LyFlZ9QiN8">
+	
+
+
+
+	    <div class="videolist conbd" style="background-color: white">
+	    			    	<div class="kpsel" style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/5196db60494431.5a4ee5c65c1c4.jpg)">
+		    				    		<dl class="cf">
+		    			<dt>Types of Cards</dt>
+		    			<dd rel_c_id=52 style="background-image: url(data:image/jpeg;base64,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);">
+		    				<a class="on" rel="all" href="#">All
+		    						    					<a rel="0" href="#">Troop</a>
+		    						    					<a rel="1" href="#">Spell</a>
+		    						    					<a rel="2" href="#">Building</a>
+		    						    			</dd>
+		    		</dl>
+		    				    		<dl class="cf">
+		    			<dt>Rarity</dt>
+		    			<dd rel_c_id=53 style="background-image: url(data:image/jpeg;base64,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);">
+		    				<a class="on" rel="all" href="#">All</a>
+		    						    					<a rel="0" href="#">Common</a>
+		    						    					<a rel="1" href="#">Rare</a>
+		    						    					<a rel="2" href="#">Epic</a>
+		    						    					<a rel="3" href="#">Legendary</a>
+		    						    			</dd>
+		    		</dl>
+		    				    		<dl class="cf">
+		    			<dt>Arena</dt>
+		    			<dd rel_c_id=54 style="background-image: url(data:image/jpeg;base64,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);">
+		    				<a class="on" rel="all" href="#">All</a>
+		    						    					<a rel="0" href="#">Training Camp</a>
+		    						    					<a rel="1" href="#">Goblin Stadium</a>
+		    						    					<a rel="2" href="#">Bone Pit</a>
+		    						    					<a rel="3" href="#">Barbarian Bowl</a>
+		    						    					<a rel="4" href="#">P.E.K.K.A's Playhouse</a>
+		    						    					<a rel="5" href="#">Spell Valley</a>
+		    						    					<a rel="6" href="#">Builder's Workshop</a>
+		    						    					<a rel="7" href="#">Royal Arena</a>
+		    						    					<a rel="8" href="#">Frozen Peak</a>
+		    						    					<a rel="9" href="#">Jungle Arena</a>
+		    						    					<a rel="10" href="#">Hog Mountain</a>
+		    						    			</dd>
+		    		</dl>
+		    				    	</div>
+	    				<ul class="listImg2" id="daquan_list">
+											<li><label for="modal_1" class="button" style="color: black"><img src="https://cdn.statsroyale.com/images/cards/full/fisherman.png">Fisherman</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_1">
+                                                <label for="modal_1" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://a1.qpic.cn/psc?/V11TH7Db3X3dgR/NZ9C4PTRAOGVNvAxFZDwt1SEjPvV28Gk1S6LR5cYFwUn7KPiqs80czQrvWs8RVyYwX5qxn9TwwcRz0cySuTB*g!!/b&ek=1&kp=1&pt=0&bo=OAS8CAAAAAARF6g!&tl=3&vuin=3472300349&tm=1589313600&sce=60-4-3&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+                                            <li><label for="modal_2" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/wallbreaker.png">Wall Breakers</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_2">
+                                                <label for="modal_2" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh07U.Khdiz4FxSRisQ8Ti0QuekOHpjVASiLoZdF8lHF2yzUNzmtA.Ccc7lKMuAS*Gc6arDrr03gaydh7nyDM*QA!/b&bo=OASwCAAAAAARF6Q!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+                                             <li><label for="modal_3" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/ram_rider.png">Ram Rider</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_3">
+                                                <label for="modal_3" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh8omC2Ht5fVEQCBKTztf7bd0lxAp0RlFnmEwwKLkrGjnKxaI90LTNHm4AEsE51yake8hdFOedWRL5ABn2Stkfck!/b&bo=OASuCAAAAAARF7o!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+											 <li><label for="modal_4" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/electro_dragon.png">Electro Dragon</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_4">
+                                                <label for="modal_4" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh22q*c5wcnidxvntawDG1Rd8O10r5iQWXvEyZr5a5PuLNXmirNMUGSklXso6C60TMegALwIm4jwZVwbKODNknSw!/b&bo=OASjCAAAAAARF7c!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+											<li><label for="modal_5" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/goblin_giant.png">Goblin Giant</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_5">
+                                                <label for="modal_5" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh57AQzklPhfHMbervZlY.nxBldeABdRlngfGkIJbouk*wBU5nQyyM77CwPZBVgWQUwDab5TsBwybSuNo*Wwpejs!/b&bo=OASpCAAAAAARF70!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+											<li><label for="modal_6" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/royal_recruits.png">Royal Recruits</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_6">
+                                                <label for="modal_6" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh9XBJj9OUlG6QrF43VdT1t7F.k2EDfwXltwddi72KrGL6OMhDH9yk4nmrlVsRHTFeYD2*29d*xmM4aHydnXPqpA!/b&bo=OAS1CAAAAAARF6E!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+												<li><label for="modal_7" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/royal_hog.png">Royal Hogs</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_7">
+                                                <label for="modal_7" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh4XEgbDdIKc.uBclpFn9meHN*woWI7*8D*DYBtMg0jyIYJokamkRoVX7Gh47YIytzi5L.BQ5OdevY8QJxCrWxjg!/b&bo=OAS1CAAAAAARF6E!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+										    	<li><label for="modal_8" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/snowball.png">Giant Snowball</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_8">
+                                                <label for="modal_8" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh.yIqnkNUQ0AkuVUiJnwit9r525VafBYfUi1XPxIv9TghAkwhpdoMxMMyXJ2TcI3162z7ZuMk6Pzl5ATbq3B1j0!/b&bo=OASyCAAAAAARF6Y!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+											<li><label for="modal_9" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/rascals.png">Rascals</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_9">
+                                                <label for="modal_9" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh6sEHh13lGi*XCB*FSBILTm9ckkUGBrry3yzTIrNomL81yxX.8OerK1fcXubb8yk0zujL4pMjyInNS5HxLGZbqE!/b&bo=OASLCAAAAAARF58!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+											<li><label for="modal_10" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/barb_barrel.png">Barbarian Barrel</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_10">
+                                                <label for="modal_10" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh3WAPskNzNnrCPKcQwd1aXX.liSwV*vl.QonHVJyEYqv8KB9IQdM3Zl4GH1IsfvQK2CoXIjTHV*JyZtMxX.EKhk!/b&bo=OASmCAAAAAARF7I!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+ 
+
+                                            <li><label for="modal_11" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/magic_archer.png">Magic Archer</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_11">
+                                                <label for="modal_11" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh5H.gO*DvBvxYdokPVcqkX*6inALbXC1dKvWjFFZfCi4Z.vE4ITPIJgyv5PRsts5avk.xCVQBbmTgxxKozoQWMk!/b&bo=OAStCAAAAAARF7k!&rf=viewer_44" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+											
+
+
+											<li><label for="modal_12" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/ghost.png">Royal Ghost</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_12">
+                                                <label for="modal_12" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh0F9tHvIdUZ1KrnpWrHd1DYzaY4fyAp8SJMRVEfgUotAFOjuu5AfkqYurjyd3tzSYwgDSP2vTCyLfUmnDr5cHws!/b&bo=OASkCAAAAAARF7A!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+											
+											<li><label for="modal_13" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/zappies.png">Zappies</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_13">
+                                                <label for="modal_13" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh*LB3RyWc.NX7sVzZJOzF0DfGt5SEk6oV*IEKNlMqPko96ek*8Bkl5eRzb6klqo8j6cUqlsEL0qb8rdqrCdfx9k!/b&bo=OASbCAAAAAARF48!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+											<li><label for="modal_14" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/hunter.png">Hunter</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_14">
+                                                <label for="modal_14" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh7Xw.HctEdn075LIptG.tbYa..wChfoSgTXmRdfiscNm1pJhtMyRCIbXnSRoTm*2JYn99SCc.rffHnCaJO2wiO8!/b&bo=OASkCAAAAAARF7A!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+
+                                            <li><label for="modal_15" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/flying_machine.png">Flying Machine</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_15">
+                                                <label for="modal_15" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh4X5Xgk6ITca9U*vKv*thYKOMOyzuG0cnCf6079gJ.Xz*7rQa7hh3on7gXmtGwSkeYG66OqzSJLz1tDpAch59c0!/b&bo=OASGCAAAAAARF5I!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+											<li><label for="modal_16" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/mega_knight.png">Mega Knight</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_16">
+                                                <label for="modal_16" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh9alSIaFm6bfOGNbyTqealuZZ*gShFmEYByL58t9dVpsev7*MDs53bTgDCckEd7fP2A4LWtBYD8KnNpfYN0Knbs!/b&bo=OASVCAAAAAARF4E!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+											
+
+
+
+											<li><label for="modal_17" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/skeleton_balloon.png">Skeleton Barrel</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_17">
+                                                <label for="modal_17" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOhx1dsrTFwWfWA70FUGkoT*PBK69Wt*Hd1UW6feXrfwUcBoj9FA7C5oikApOJ425oITg*lY9pKNm80Abq8vj4oIU!/b&bo=OAStCAAAAAARF7k!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+                                            <li><label for="modal_18" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/cannon_cart.png">Cannon Cart</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_18">
+                                                <label for="modal_18" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh5ZY8WufgWm86svldO5nJgkjsuAeHd05*iWP0UtrqERZjiPh40x0FpKAwQ7TT9tCydKf3puXw0RbUqDotoQ9MpM!/b&bo=OASjCAAAAAARF7c!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+											 <li><label for="modal_19" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/dark_witch.png">Night Witch</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_19">
+                                                <label for="modal_19" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh81S6ZN3YyPypZrH..LxOAov3SqYE3KJjs2aU.LGrDqCO4K.PJ9dz*yQ27QDlA7wjvuaDmz01nX2OR1VndDknPY!/b&bo=OASbCAAAAAARF48!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+											 <li><label for="modal_20" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/healspirit.png">Heal Spirit</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_20">
+                                                <label for="modal_20" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh03ht9rKw75WejIJzlVWqJ2Me.GbcqvlhXxsSPEE6AVpGz4Ga1PEL6pobvz6C2WE7uSoYBkMFZCkj2r9CRLdlc8!/b&bo=OASuCAAAAAARF7o!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+
+                                            <li><label for="modal_21" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/bats.png">Bats</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_21">
+                                                <label for="modal_21" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh1DjSNRRuMxZr8XKtO1AU2l4fsx.75nG9VEiovTSludSCfeM9Bz2WTh*HVzLXxzQyMZCrPUClLO5MmddLsQIeeE!/b&bo=OASdCAAAAAARF4k!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+
+                                            <li><label for="modal_22" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/bandit.png">Bandit</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_22">
+                                                <label for="modal_22" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOhzhEW5cNkreJ.3yTR56oKK7g6.LwBZMGP01BvBwik0AQMCVGMVhhQ5tOXt92h18VHc6jo7*QS9fTIv7tswA*IP4!/b&bo=OASkCAAAAAARF7A!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+											<li><label for="modal_23" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/goblin_gang.png">Goblin Gang</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_23">
+                                                <label for="modal_23" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh6w7ExTYonS*olU9M6mWNY1dSu0A4uPszpiDiSx3.CeW7ECnuKptBhza3HpcI7p4fpIn9sZkhgyi11m*ZAYxAOQ!/b&bo=OASzCAAAAAARF6c!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+
+                                            <li><label for="modal_24" class="button" style="color: black" rel52="" rel53="" rel54=""><img src="https://cdn.statsroyale.com/images/cards/full/goblin_gang.png">Battle Ram</label>
+												<div class="modal">
+                                                <input type="checkbox" name="" id="modal_24">
+                                                <label for="modal_24" class="overlay"></label>
+                                                <div class="main">
+                                            <p><img src="http://m.qpic.cn/psc?/V11TH7Db3X3dgR/YPhsM5mUO5.bFmyDEhTOh6w7ExTYonS*olU9M6mWNY1dSu0A4uPszpiDiSx3.CeW7ECnuKptBhza3HpcI7p4fpIn9sZkhgyi11m*ZAYxAOQ!/b&bo=OASzCAAAAAARF6c!&rf=viewer_4" style="height: 1200px; width: 600px" ></p></div></div></li>
+											
+											
+											
+											
+											<li rel="57292" rel_n="野蛮人攻城槌" style="display:none;"  rel52="0" rel53="1" rel54="6"><a href="http://news.4399.com/kpct/kapai/bd/m/711012.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034303556-1.png" alt="部落冲突：皇室战争野蛮人攻城槌">野蛮人攻城槌</a></li>
+											<li rel="57292" rel_n="吹箭哥布林" style="display:none;"  rel52="0" rel53="1" rel54="9"><a href="http://news.4399.com/kpct/kapai/bd/m/710978.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P00003430OV-1.png" alt="部落冲突：皇室战争吹箭哥布林">吹箭哥布林</a></li>
+											<li rel="57292" rel_n="飞斧屠夫" style="display:none;"  rel52="0" rel53="2" rel54="9"><a href="http://news.4399.com/kpct/kapai/bd/m/710900.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034301255-1.png" alt="部落冲突：皇室战争飞斧屠夫">飞斧屠夫</a></li>
+											<li rel="57292" rel_n="闪电法师" style="display:none;"  rel52="0" rel53="3" rel54="7"><a href="http://news.4399.com/kpct/kapai/bd/m/709052.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034309B1-1.png" alt="部落冲突：皇室战争闪电法师">闪电法师</a></li>
+											<li rel="57293" rel_n="克隆法术" style="display:none;"  rel52="1" rel53="2" rel54="8"><a href="http://news.4399.com/kpct/kapai/fs/m/707228.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034303252-1.png" alt="部落冲突：皇室战争克隆法术">克隆法术</a></li>
+											<li rel="57292" rel_n="野蛮人精锐" style="display:none;"  rel52="0" rel53="0" rel54="7"><a href="http://news.4399.com/kpct/kapai/bd/m/701232.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034302450-1.png" alt="部落冲突：皇室战争野蛮人精锐">野蛮人精锐</a></li>
+											<li rel="57293" rel_n="飓风法术" style="display:none;"  rel52="1" rel53="2" rel54="6"><a href="http://news.4399.com/kpct/kapai/fs/m/693332.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P00003430Q21-1.png" alt="部落冲突：皇室战争飓风法术">飓风法术</a></li>
+											<li rel="57293" rel_n="骷髅召唤" style="display:none;"  rel52="0" rel53="3" rel54="5"><a href="http://news.4399.com/kpct/kapai/fs/m/689590.html"><img src="http://newsimg.5054399.com/uploads/soft/161129/204_1123188991.png" alt="部落冲突：皇室战争骷髅召唤">骷髅召唤</a></li>
+											<li rel="57292" rel_n="戈仑冰人" style="display:none;"  rel52="0" rel53="1" rel54="8"><a href="http://news.4399.com/kpct/kapai/bd/m/684984.html"><img src="http://newsimg.5054399.com/uploads/soft/161014/204_1000481521.png" alt="部落冲突：皇室战争戈仑冰人">戈仑冰人</a></li>
+											<li rel="57292" rel_n="地狱飞龙" style="display:none;"  rel52="0" rel53="3" rel54="4"><a href="http://news.4399.com/kpct/kapai/bd/m/681463.html"><img src="http://newsimg.5054399.com/uploads/soft/161009/204_1451437251.png" alt="部落冲突：皇室战争地狱飞龙">地狱飞龙</a></li>
+											<li rel="57292" rel_n="重甲亡灵" style="display:none;"  rel52="0" rel53="1" rel54="7"><a href="http://news.4399.com/kpct/kapai/bd/m/676291.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034301120-1.png" alt="部落冲突：皇室战争重甲亡灵">重甲亡灵</a></li>
+											<li rel="57293" rel_n="复仇滚木" style="display:none;"  rel52="1" rel53="3" rel54="6"><a href="http://news.4399.com/kpct/kapai/fs/m/648451.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P0000343020a-1.png" alt="部落冲突：皇室战争复仇滚木">复仇滚木</a></li>
+											<li rel="57292" rel_n="寒冰精灵" style="display:none;"  rel52="0" rel53="0" rel54="8"><a href="http://news.4399.com/kpct/kapai/bd/m/648428.html"><img src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034303314-1.png" alt="部落冲突：皇室战争寒冰精灵">寒冰精灵</a></li>
+											<li rel="57292" rel_n="狂暴樵夫" style="display:none;"  rel52="0" rel53="3" rel54="8"><a href="http://news.4399.com/kpct/kapai/bd/m/648414.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P00003430b93-1.png" alt="部落冲突：皇室战争狂暴樵夫">狂暴樵夫</a></li>
+											<li rel="57292" rel_n="巨石投手" style="display:none;"  rel52="0" rel53="2" rel54="8"><a href="http://news.4399.com/kpct/kapai/bd/m/648379.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P0000343061F-1.png" alt="部落冲突：皇室战争巨石投手">巨石投手</a></li>
+											<li rel="57294" rel_n="烈焰熔炉" style="display:none;"  rel52="2" rel53="1" rel54="5"><a href="http://news.4399.com/kpct/kapai/jz/m/627595.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P00003430L96-1.png" alt="部落冲突：皇室战争烈焰熔炉">烈焰熔炉</a></li>
+											<li rel="57292" rel_n="骷髅卫士" style="display:none;"  rel52="0" rel53="2" rel54="7"><a href="http://news.4399.com/kpct/kapai/bd/m/627574.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P000034302W7-1.png" alt="部落冲突：皇室战争骷髅卫士">骷髅卫士</a></li>
+											<li rel="57292" rel_n="烈焰精灵" style="display:none;"  rel52="0" rel53="0" rel54="5"><a href="http://news.4399.com/kpct/kapai/bd/m/627556.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P00003430J62-1.png" alt="部落冲突：皇室战争烈焰精灵">烈焰精灵</a></li>
+											<li rel="57292" rel_n="电磁炮" style="display:none;"  rel52="0" rel53="3" rel54="6"><a href="http://news.4399.com/kpct/kapai/bd/m/627518.html"><img lz_src="http://newsimg.5054399.com/uploads/allimg/201706/010P0000343050T-1.png" alt="部落冲突：皇室战争电磁炮">电磁炮</a></li>
+											
+				         
+
+
+
+
+
+
+
+
+
+
+
+
+
+				         </ul>
+	         <div class="gk_more" id="daquan_link"><a href="#">More</a></div>
+	    </div>
+    </div>
+    	
+	
+	        </li>
+			<li class="li3"><a href="#" class="tuc-scroll" data-target="j-site-menu" data-time="1000" data-pos="0" data-animited="true"></a></li>
+		</ul>
+
+	</div>
+
+	
+</style>
+       
+
+
+
+
+</div>	<script>
+		
+		func_init.default_num = 36;
+		func_init.search().daquan().share( 'https://lh3.googleusercontent.com/proxy/b8eF2xXBKt_3OMnxQViCQv8sFomyWwkt6AeLzN_HECdPx-yiszddcT4vVp1GAHnpbcb6IR2igjFWl3Jt10MSbMO8y98Ose2c8pFm8fwoa62ieHYBrBuo6A').selfil();
+
+		
+	   
+	</script>
+   
+
+
+
+</body>
+</html>
